@@ -1,0 +1,244 @@
+footer a:link {
+    text-decoration: none !important;
+}
+
+header a {
+    background-image: none !important;
+}
+
+p, h1, h2, h3 {
+    -webkit-hyphens: manual !important;
+    -moz-hyphens: manual !important;
+    -ms-hyphens: manual !important;
+    hyphens: manual !important;
+}
+
+@font-face {
+    font-family: 'america';
+    src: url('https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6181f708d5e2d234a743da2f/1635907336480/GT-America-Expanded-Black.otf');
+}
+
+@font-face {
+    font-family: 'inter';
+    src: url('https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6181f98eac6bd37a819ee221/1635907983061/Inter-Medium.ttf');
+}
+
+h1, h2, h3, h4 {
+    font-family: 'america';
+}
+
+.sqsrte-large, .sqsrte-small, p {
+    font-family: 'inter';
+}
+
+.header-nav-item a {
+    font-family: 'america' !important;
+    font-size: 32px !important;
+}
+
+.sqs-block-button .sqs-block-button-element--medium {
+    font-family: 'america';
+    color: white;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    line-height: 6px;
+}
+
+
+/*______ 2022 Redesign _____ */
+
+.stay-in-line {
+    white-space: nowrap;
+}
+
+.big-bold-title {
+    font-style: normal;
+    font-family: america;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    font-size: 3.2rem;
+    line-height: 1;
+    letter-spacing: 0.1rem;
+}
+
+.header-title-logo img.nightLogo {
+    filter: invert(1);
+}
+
+/* Adding plus icon to header */
+.header-nav .header-nav-wrapper nav.header-nav-list .header-nav-item.header-nav-item--collection {
+    position: relative;
+    font-family: 'america', serif;
+    display: flex;
+    margin: 0px;
+}
+
+.header-nav-item.header-nav-item--collection::after {
+    content: "+";
+    padding: 0 20px;
+    color: black;
+    font-size: 32px;
+    line-height: 36px;
+}
+
+.header-nav-item.header-nav-item--collection:last-child::after {
+    display: none;
+}
+
+
+
+/* fill up hover*/
+.fillUpHoverLink,
+.words-hover a .words-hover-word,
+.words-hover .words-hover-word.showHover,
+.header-nav-item.header-nav-item--collection a {
+    position: relative;
+    cursor: pointer;
+}
+
+.nightMode .fillUpHoverLink::after,
+.nightMode .words-hover a .words-hover-word::after,
+.nightMode .words-hover .words-hover-word.showHover::after,
+.nightMode .header-nav-item.header-nav-item--collection a:after {
+    background-color: #fff;
+}
+
+.fillUpHoverLink::after,
+.words-hover a .words-hover-word::after,
+.words-hover .words-hover-word.showHover::after,
+.header-nav-item.header-nav-item--collection a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.nightMode .words-hover a .words-hover-word::after,
+.words-hover .words-hover-word.showHover::after {
+    bottom: 8px;
+}
+
+.fillUpHoverLink:hover::after,
+.nightMode .words-hover a .words-hover-word:hover::after,
+.words-hover .words-hover-word.showHover:hover::after,
+.header-nav-item.header-nav-item--collection a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/*video logo*/
+.header-title-logo {
+    position: relative;
+}
+
+.logoVideo {
+    height: 86px;
+    width: 86px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+}
+
+/*hover background*/
+#tail {
+    position: absolute;
+    display: none;
+    z-index: 1;
+}
+
+/* aspect ratios*/
+.vimeoVideo {
+    position: relative;
+}
+.vimeoVideo-block{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.vimeoVideo.aspectRatio1x1 {
+    padding: 100% 0 0 0;
+}
+
+.vimeoVideo.aspectRatio16x9 {
+    padding: 56.25% 0 0 0;
+}
+
+.vimeoVideo.aspectRatio4x3 {
+    padding: 75% 0 0 0
+}
+
+.vimeoVideo.aspectRatio4x5 {
+    padding: 125% 0 0 0
+}
+
+.sqs-block-editable .generateVideo::before {
+    content: attr(data-title);
+    display: block;
+    border: 1px solid #000;
+    width: 100%;
+}
+
+.sqs-block-editable .generateVideo[data-aspectratio="aspectRatio1x1"]::before {
+    padding: 100% 0 0 0;
+}
+
+.sqs-block-editable .generateVideo[data-aspectratio="aspectRatio16x9"]::before {
+    padding: 56.25% 0 0 0;
+}
+
+.sqs-block-editable .generateVideo[data-aspectratio="aspectRatio4x3"]::before {
+    padding: 75% 0 0 0
+}
+
+.sqs-block-editable .generateVideo[data-aspectratio="aspectRatio4x5"]::before {
+    padding: 125% 0 0 0
+}
+
+.nightMode .sqs-block-editable .generateVideo::before {
+    border-color: #fff;
+}
+
+/* featherlight modal modifications*/
+.featherlight-close-icon,
+.featherlight .close {
+    display: none;
+}
+
+.featherlight *,
+.featherlight.featherlight-iframe .featherlight-content,
+.featherlight iframe.featherlight-inner{
+    background : transparent!important;
+}
+
+
+/*SPIN animation*/
+.hover-spin-child .spin-this {
+    overflow: hidden;
+    transition-duration: 0.8s;
+    transition-property: transform;
+    transform-origin: center center;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    line-height: 26px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.hover-spin-child:hover .spin-this {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+
+}
