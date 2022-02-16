@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="//code.jquery.com/jquery-latest.js"></script>
+    <link href="site.css" type="text/css" rel="stylesheet"/>
+    <link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css"
+          rel="stylesheet"/>
+    <style>
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        a{
+            font-family: inter,serif;
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 39.2px;
+            text-decoration: none;
+            text-size-adjust: 100%;
+            text-transform: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="flex-row">
+    <div style="width: 600px; height: auto;">
+        <div class="generateVideo"
+             data-video="666059011?h=6aa58dc41c"
+             data-aspectratio="aspectRatio1x1"
+             data-title="Video Title"
+             data-subtitle="Video Subtitle"
+             data-modal="true"
+        ></div>
+    </div>
+    <div style="width: 1067px; height: auto">
+        <div class="generateVideo"
+             data-video="673746465?h=11ccba6467"
+             data-aspectratio="aspectRatio16x9"
+             data-title="Video Title"
+             data-subtitle="Video Subtitle"
+             data-modal="true"
+        ></div>
+    </div>
+    <div style="width: 800px; height: auto">
+        <div class="generateVideo"
+             data-video="677308836?h=2296265f44"
+             data-aspectratio="aspectRatio4x3"
+             data-title="Video Title"
+             data-subtitle="Video Subtitle"
+             data-modal="true"
+        ></div>
+    </div>
+</div>
+</body>
+<script>
+    $(document).ready(function () {
+        // generating videos
+
+        const aspectRatioValues = {
+            aspectRatio1x1: {
+                cssClass: "aspectRatio1x1",
+                height: "1080px",
+                width: "1080px",
+                maxHeight: "85vh",
+                maxWidth: "85vh",
+            },
+            aspectRatio16x9: {
+                cssClass: "aspectRatio16x9",
+                height: "1080px",
+                width: "1920px",
+                maxHeight: "1080px",
+                maxWidth: "1920px",
+            },
+            aspectRatio4x3: {
+                cssClass: "aspectRatio4x3",
+                height: "1080px",
+                width: "1440px",
+                maxHeight: "1080px",
+                maxWidth: "1440px",
+            },
+            aspectRatio4x5: {
+                cssClass: "aspectRatio4x5",
+                height: "1350px",
+                width: "1080px",
+                maxHeight: "1350px",
+                maxWidth: "1080px",
+            },
+        }
+
+        const generateVideo = (videoId, aspectRatio, title, subTitle, hasModal, linkUrl = "") => {
+
+            if (hasModal) {
+                return $(`
+                    <a href="https://player.vimeo.com/video/${videoId}"
+                        data-featherlight="iframe"
+                        data-featherlight-iframe-frameborder="0"
+                        data-featherlight-iframe-allow="autoplay; encrypted-media"
+                        data-featherlight-iframe-allowfullscreen="true"
+                        data-featherlight-iframe-style="
+                            display:block;
+                            border:none;
+                            height:${aspectRatioValues[aspectRatio].height};
+                            width:${aspectRatioValues[aspectRatio].width};
+                            max-height:96vh;
+                        "
+                    >
+                        <div class="vimeoVideo ${aspectRatioValues[aspectRatio].cssClass}">
+                            <div class="vimeoVideo-block"></div>
+                            <iframe src="https://player.vimeo.com/video/${videoId}&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;background=1&amp;autopause=1" allowFullScreen="0"frameBorder="0"style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                        </div>
+                        <p class="sqsrte-large hover-spin-child">
+                            <strong>${title}</strong>
+                            <br/><span class="spin-this">+</span> ${subTitle}️
+                        </p>
+                    </a>
+                `);
+            } else {
+                return $(`
+                    <a href="${linkUrl}">
+                        <div class="vimeoVideo ${aspectRatioValues[aspectRatio].cssClass}">
+                            <div class="vimeoVideo-block"></div>
+                            <iframe src="https://player.vimeo.com/video/${videoId}&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;background=1&amp;autopause=1" allowFullScreen="0" frameBorder="0" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                        </div>
+                        <p class="sqsrte-large hover-spin-child">
+                            <strong>${title}</strong>
+                            <br/><span class="spin-this">+</span> ${subTitle}️
+                        </p>
+                    </a>
+                `);
+            }
+        };
+
+        const players = [];
+        const viewportHeight = $(window).height();
+
+        $('.generateVideo').each(function () {
+            const $vimeoVideo = generateVideo(
+                $(this).data("video"),
+                $(this).data("aspectratio"),
+                $(this).data("title"),
+                $(this).data("subtitle"),
+                $(this).data("modal"),
+                $(this).data("link"),
+            );
+
+            $vimeoVideo.appendTo($(this));
+
+            players.push({
+                player: new Vimeo.Player($(this).find("iframe").get(0)),
+                top: $(this).offset().top,
+                bottom: $(this).offset().top + $(this).height(),
+                height: $(this).outerHeight(),
+                status: "pause"
+            })
+            $(this).addClass("loaded")
+        });
+
+        // video pause if not in view
+
+        $(window).on('scroll', function () {
+            const scrollPos = $(window).scrollTop();
+            for (let i = 0; i < players.length; i++) {
+                const elementFromTop = players[i].top - scrollPos + players[i].height;
+                const status = (elementFromTop > 0 && elementFromTop < players[i].top + viewportHeight) ? "play" : "pause";
+                if (players[i].status !== status) {
+                    players[i].status = status;
+                    players[i].player[status]();
+                }
+            }
+        });
+    })
+</script>
+<script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript"
+        charSet="utf-8"></script>
+</html>
