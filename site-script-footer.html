@@ -1,0 +1,303 @@
+<script>
+    const media = {
+        staff: {
+            TRISH: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6209775ae6470f1f2d315e0e/1644787546531/Trish.jpg",
+            TRAVIS: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6209776c93dd371732167d3e/1644787564463/Travis.jpg",
+            SCOTT: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/62097774d0bc844e2922e746/1644787572953/Scott.jpg",
+            NED: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6209777b82cb265dbd168743/1644787580024/Ned.jpg",
+            MEAGAN: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6209779c3dea9e22f64a13fd/1644787612761/Meagan.jpg",
+            MATT: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6209779f97c817535f7c9bf8/1644787615988/Matt.jpg",
+            MAGNUS: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620977a56f98284656523eca/1644787621163/Magnus.jpg",
+            LUIS: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620977a993dd3717321687c9/1644787625062/Luis.jpeg",
+            LAUREN: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620977ae6a25c62651beb02e/1644787630530/Lauren.jpg",
+            JEFF: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620977b23dea9e22f64a145b/1644787634134/Jeff.jpg",
+            CLOIE: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620977b7b3e3450810523d0a/1644787639180/Cloie.jpg",
+        },
+
+        archive: {
+            TINYTRIUMPHS: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c46b8aade6223855ccb4c/1644971704847/HAC-TinyTriumphs.mp4",
+            OREOALADDIN: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c470754ea6050fc9d0bde/1644971785760/HAC-OreoAladdin.mp4",
+            OREOWONDER: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c470de59603681053a012/1644971791106/HAC-OreoWonder.mp4",
+            CHIPSAHOY: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c4713e391d407642d4e9c/1644971796663/HAC-ChipsAhoy.mp4",
+            BONEYARD: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c471e0375e45bf73c2c94/1644971806786/HAC-BONEYARD.png",
+            CENTRUM: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c4728de88c5539e8222be/1644971818668/HAC-Centrum.mp4",
+            COSTEAU: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c47312fb1da024c00693c/1644971826266/HAC-Costeau.mp4",
+            ITSLIT: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c4736c965721edcd7ec75/1644971833432/HAC-ItsLit.mp4",
+            NATGEO: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c47431c3c7c0e56aaa58c/1644971843965/HAC-NatGeo.mp4",
+            ETHOS: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c474886dd0b07e9dbec76/1644971848474/HAC-Ethos.png",
+            CHEVY: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c474e54ea6050fc9d13d8/1644971856905/HAC-Chevy.mp4",
+            BUDDY: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c4754ffc2d75be282baf9/1644971860825/HAC-Buddy.mp4",
+            STOLI: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c475a70a7852020d9b7f9/1644971867561/HAC-Stoli.mp4",
+            RITZ: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620c47608716c305b0450214/1644971873255/HAC-Ritz.mp4",
+        },
+
+        links: {
+            TINYTRIUMPHS: "/tiny-triumphs",
+            OREOALADDIN: "/aladdin",
+            OREOWONDER: "/wonder",
+            CHIPSAHOY: "/chips-ahoy",
+            BONEYARD: "/boneyard",
+            CENTRUM: "/centrum",
+            COSTEAU: "/costeau",
+            ITSLIT: "/its-lit",
+            NATGEO: "/natgeo",
+            ETHOS: "/ethos",
+            CHEVY: "/chevy",
+            BUDDY: "/buddy",
+            STOLI: "/stoli",
+            RITZ: "/ritz",
+            MOBILEPLAY: "mobile-play",
+            NCLOTTO: "nc-lotto",
+        }
+    }
+    $(document).ready(function () {
+        function isNight() {
+            let date = new Date();
+            return (date.getHours() > 21 || date.getHours() < 6);
+        }
+
+        function changeLogoToVideo() {
+            const logoSrcNight = "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/62083a729120b86fe85c794a/1644706418966/H%2BC-LOGO-HeaderHoverState-Dark001.mp4"
+            const logoSrcDay = "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/62083a4fd709793a3a435706/1644706383954/H%2BC-LOGO-HeaderHoverState-White001.mp4"
+
+            const logoVideo = $('<video />', {
+                id: 'logoVideo',
+                src: isNight() ? logoSrcNight : logoSrcDay,
+                type: 'video/mp4',
+                autoplay: true,
+                controls: false,
+                muted: true,
+                class: "logoVideo"
+            });
+
+            logoVideo.appendTo($('.header-title-logo a'));
+            setTimeout(() => {
+                $("#logoVideo").remove()
+            }, 3000);
+
+        }
+
+        $(".header-title-logo").on({
+            mouseenter: function () {
+                changeLogoToVideo();
+            },
+        });
+
+        if (isNight()) {
+            $(".header-title-logo img").addClass("nightLogo");
+            $(".sloganSvg svg").css("fill", "white");
+            $("body").addClass("nightMode");
+            $("body").css("background-color", "black");
+            $("section.page-section.white, header.header.white").toggleClass("white", "bright-inverse");
+        }
+
+        // adding hover and styles to archive and about us words
+        $('.words-hover').each(function () {
+            const words = $(this).text().split(' + ');
+            $(this).empty().html(function () {
+                for (i = 0; i < words.length; i++) {
+                    const objectToSearch = $(this).closest(".links-with-hover-media").attr('id');
+                    const keyToSearch = words[i].replace(/ /g, '').replace("'", '').toUpperCase();
+                    const hasHover = media[objectToSearch][keyToSearch] ? "showHover" : "noHover";
+                    const link = media.links[keyToSearch];
+                    const mediaType = media[objectToSearch][keyToSearch]?.split('.').at(-1) ?? "none";
+
+
+                    if (link) {
+                        if (i === 0) {
+                            $(this).append(`<a href="${link}"><span class="words-hover-word ${hasHover} ${words[i]} ${mediaType}" id="${keyToSearch}">${words[i]}</span></a> `);
+                        } else {
+                            $(this).append(`+ <a href="${link}"><span class="words-hover-word ${hasHover} ${words[i]} ${mediaType}" id="${keyToSearch}">${words[i]}</span></a> `);
+                        }
+                    } else {
+                        if (i === 0) {
+                            $(this).append(`<span class="words-hover-word ${hasHover} ${words[i]} ${mediaType}" id="${keyToSearch}">${words[i]}</span> `);
+                        } else {
+                            $(this).append(`+ <span class="words-hover-word ${hasHover} ${words[i]} ${mediaType}" id="${keyToSearch}">${words[i]}</span> `);
+                        }
+                    }
+
+                }
+
+            });
+
+        });
+
+        // adding image behind about us list
+        const $hoverTail = $(`<div id="tail">
+                <video
+                id="popUpVideo"
+                autoplay
+                loop
+                muted
+                >
+                    <source type="video/mp4" src="" id="video_src">
+                </video>
+            </div>`);
+        const $aboutUsHoverText = $(".words-hover-word.showHover");
+        $hoverTail.appendTo($("body"));
+
+        $(document).on('mousemove', ".words-hover-word.showHover", function (e) {
+            const objectToSearch = $(this).closest(".links-with-hover-media").attr('id');
+            const keyToSearch = $(this).attr('id');
+            const hoverMedia = media[objectToSearch][keyToSearch];
+
+
+            if (hoverMedia) {
+                const isVideo = $(this).hasClass('mp4');
+                $hoverTail.css({
+                    left: e.pageX + 20,
+                    top: e.pageY,
+                    height: "240px",
+                    width: "240px",
+                    "background-color": "white",
+                    background: !isVideo ? `url(${hoverMedia})` : "",
+                });
+                if (isVideo) {
+                    $("#video_src").attr("src", hoverMedia);
+                } else {
+                    $("#video_src").attr("src", "");
+                }
+            }
+        });
+
+        $aboutUsHoverText.bind('mouseleave', function () {
+            const objectToSearch = $(this).closest(".links-with-hover-media").attr('id');
+            const hoverBackground = media[objectToSearch][$(this).attr('id')];
+            if (hoverBackground) {
+                $hoverTail.css({
+                    display: 'none'
+                });
+            }
+        });
+        $aboutUsHoverText.bind('mouseenter', function () {
+            const objectToSearch = $(this).closest(".links-with-hover-media").attr('id');
+            const hoverBackground = media[objectToSearch][$(this).attr('id')];
+            if (hoverBackground) {
+                $hoverTail.css({
+                    display: 'block'
+                });
+                $("#popUpVideo").load()
+            }
+        });
+
+        // generating videos
+
+        const aspectRatioValues = {
+            aspectRatio1x1: {
+                cssClass: "aspectRatio1x1",
+                height: "1080px",
+                width: "1080px",
+                maxHeight: "85vh",
+                maxWidth: "85vh",
+            },
+            aspectRatio16x9: {
+                cssClass: "aspectRatio16x9",
+                height: "1080px",
+                width: "1920px",
+                maxHeight: "1080px",
+                maxWidth: "1920px",
+            },
+            aspectRatio4x3: {
+                cssClass: "aspectRatio4x3",
+                height: "1080px",
+                width: "1440px",
+                maxHeight: "1080px",
+                maxWidth: "1440px",
+            },
+            aspectRatio4x5: {
+                cssClass: "aspectRatio4x5",
+                height: "1350px",
+                width: "1080px",
+                maxHeight: "1350px",
+                maxWidth: "1080px",
+            },
+        }
+
+        const generateVideo = (videoId, aspectRatio, title, subTitle, hasModal, linkUrl = "") => {
+
+            if (hasModal) {
+                return $(`
+                    <a href="https://player.vimeo.com/video/${videoId}"
+                        data-featherlight="iframe"
+                        data-featherlight-iframe-frameborder="0"
+                        data-featherlight-iframe-allow="autoplay; encrypted-media"
+                        data-featherlight-iframe-allowfullscreen="true"
+                        data-featherlight-iframe-style="
+                            display:block;
+                            border:none;
+                            height:${aspectRatioValues[aspectRatio].height};
+                            width:${aspectRatioValues[aspectRatio].width};
+                            max-height:96vh;
+                        "
+                    >
+                        <div class="vimeoVideo ${aspectRatioValues[aspectRatio].cssClass}">
+                            <div class="vimeoVideo-block"></div>
+                            <iframe src="https://player.vimeo.com/video/${videoId}&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;background=1&amp;autopause=1" allowFullScreen="0"frameBorder="0"style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                        </div>
+                        <p class="sqsrte-large hover-spin-child">
+                            <strong>${title}</strong>
+                            <br/><span class="spin-this">+</span> ${subTitle}️
+                        </p>
+                    </a>
+                `);
+            } else {
+                return $(`
+                    <a href="${linkUrl}">
+                        <div class="vimeoVideo ${aspectRatioValues[aspectRatio].cssClass}">
+                            <div class="vimeoVideo-block"></div>
+                            <iframe src="https://player.vimeo.com/video/${videoId}&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;background=1&amp;autopause=1" allowFullScreen="0" frameBorder="0" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                        </div>
+                        <p class="sqsrte-large hover-spin-child">
+                            <strong>${title}</strong>
+                            <br/><span class="spin-this">+</span> ${subTitle}️
+                        </p>
+                    </a>
+                `);
+            }
+        };
+
+        const players = [];
+        const viewportHeight = $(window).height();
+
+        $('.generateVideo').each(function () {
+            const $vimeoVideo = generateVideo(
+                $(this).data("video"),
+                $(this).data("aspectratio"),
+                $(this).data("title"),
+                $(this).data("subtitle"),
+                $(this).data("modal"),
+                $(this).data("link"),
+            );
+
+            $vimeoVideo.appendTo($(this));
+
+            players.push({
+                player: new Vimeo.Player($(this).find("iframe").get(0)),
+                top: $(this).offset().top,
+                bottom: $(this).offset().top + $(this).height(),
+                height: $(this).outerHeight(),
+                status: "pause"
+            })
+            $(this).addClass("loaded")
+        });
+
+// video pause if not in view
+
+        $(window).on('scroll', function () {
+            const scrollPos = $(window).scrollTop();
+            for (let i = 0; i < players.length; i++) {
+                const elementFromTop = players[i].top - scrollPos + players[i].height;
+                const status = (elementFromTop > 0 && elementFromTop < players[i].top + viewportHeight) ? "play" : "pause";
+                if (players[i].status !== status) {
+                    players[i].status = status;
+                    players[i].player[status]();
+                }
+            }
+        });
+    });
+
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript"
+        charSet="utf-8"></script>
