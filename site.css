@@ -24,20 +24,20 @@ p, h1, h2, h3 {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'america';
+    font-family: 'america', serif;
 }
 
 .sqsrte-large, .sqsrte-small, p {
-    font-family: 'inter';
+    font-family: 'inter', serif;
 }
 
 .header-nav-item a {
-    font-family: 'america' !important;
+    font-family: 'america', serif !important;
     font-size: 32px !important;
 }
 
 .sqs-block-button .sqs-block-button-element--medium {
-    font-family: 'america';
+    font-family: 'america', serif;
     color: white;
     font-size: 12px;
     letter-spacing: 0.2em;
@@ -53,7 +53,7 @@ h1, h2, h3, h4 {
 
 .big-bold-title {
     font-style: normal;
-    font-family: america;
+    font-family: america, serif;
     font-weight: 400;
     padding: 0;
     margin: 0;
@@ -62,16 +62,12 @@ h1, h2, h3, h4 {
     letter-spacing: 0.1rem;
 }
 
-.header-title-logo img.nightLogo {
-    filter: invert(1);
-}
-
 /* Adding plus icon to header */
 .header-nav .header-nav-wrapper nav.header-nav-list .header-nav-item.header-nav-item--collection {
     position: relative;
     font-family: 'america', serif;
     display: flex;
-    margin: 0px;
+    margin: 0;
 }
 
 .header-nav-item.header-nav-item--collection::after {
@@ -137,13 +133,16 @@ h1, h2, h3, h4 {
 .header-title-logo {
     position: relative;
 }
+.header-title-logo img{
+    visibility: hidden;
+}
 
-.logoVideo {
-    height: 86px;
-    width: 86px;
+#logoVideo {
+    height:128px;
+    width: 128px;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     z-index: 10;
 }
 

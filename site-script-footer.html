@@ -201,7 +201,6 @@
         })
     }
 
-
     $(document).ready(function () {
         const $body = $("body");
 
@@ -211,31 +210,44 @@
         }
 
         function changeLogoToVideo() {
-            const logoSrcNight = "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/62083a729120b86fe85c794a/1644706418966/H%2BC-LOGO-HeaderHoverState-Dark001.mp4"
-            const logoSrcDay = "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/62083a4fd709793a3a435706/1644706383954/H%2BC-LOGO-HeaderHoverState-White001.mp4"
+            const logoSrcNight = "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620efdafb68e2f570548950a/1645149616134/HAC-LogoMark-NightMode-001.mp4"
+            const logoSrcDay = "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620efda1203ace79d2f6a70c/1645149602471/HAC-LogoMark-HoverState-001.mp4"
 
-            const logoVideo = $('<video />', {
-                id: 'logoVideo',
-                src: isNight() ? logoSrcNight : logoSrcDay,
-                type: 'video/mp4',
-                autoplay: true,
-                controls: false,
-                muted: true,
-                class: "logoVideo"
-            });
 
-            logoVideo.appendTo($('.header-title-logo a'));
-            setTimeout(() => {
-                $("#logoVideo").remove()
-            }, 3000);
+            const videlem = document.createElement("video");
 
+            const existingLogoVideo = document.querySelector("#logoVideo");
+
+            if (existingLogoVideo){
+                existingLogoVideo.play();
+            }
+
+            videlem.id = "logoVideo";
+            videlem.cssClass = "logoVideo";
+            videlem.muted = true;
+            videlem.autoplay = true;
+            videlem.loop = isNight();
+
+            const sourceMP4 = document.createElement("source");
+            sourceMP4.type = "video/mp4";
+            sourceMP4.src = isNight() ? logoSrcNight : logoSrcDay;
+
+            videlem.appendChild(sourceMP4);
+
+            const logoLink = document.querySelector(".header-title-logo a");
+            logoLink.appendChild(videlem);
         }
+
 
         $(".header-title-logo").on({
             mouseenter: function () {
+                if (isNight()) return;
                 changeLogoToVideo();
             },
         });
+
+
+        changeLogoToVideo();
 
         if (isNight()) {
             $(".header-title-logo img").addClass("nightLogo");
