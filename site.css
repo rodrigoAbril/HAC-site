@@ -84,14 +84,6 @@ h1, h2, h3, h4 {
 
 
 
-/* fill up hover*/
-.fillUpHoverLink,
-.words-hover a .words-hover-word,
-.words-hover .words-hover-word.showHover,
-.header-nav-item.header-nav-item--collection a {
-    position: relative;
-    cursor: pointer;
-}
 
 .nightMode .fillUpHoverLink::after,
 .nightMode .words-hover a .words-hover-word::after,
@@ -221,7 +213,6 @@ h1, h2, h3, h4 {
     background : transparent!important;
 }
 
-
 /*SPIN animation*/
 .hover-spin-child .spin-this {
     overflow: hidden;
@@ -240,4 +231,13 @@ h1, h2, h3, h4 {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
 
+}
+
+/* fill up hover*/
+.fillUpHoverLink,
+.words-hover a .words-hover-word,
+.words-hover .words-hover-word.showHover,
+.header-nav-item.header-nav-item--collection a, a {
+    position: relative;
+    cursor: url(https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620f1e97e58eb41fe2f8fe69/1645158039614/HAC-MouseCursor001_contrast.png), pointer;
 }
