@@ -14,8 +14,8 @@
             flex-direction: row;
         }
 
-        a{
-            font-family: inter,serif;
+        a {
+            font-family: inter, serif;
             font-size: 28px;
             font-style: normal;
             font-weight: 300;
@@ -26,78 +26,208 @@
             text-transform: none;
             color: black;
         }
+
+        .dev .generateVideo:empty::before {
+            content: attr(data-title);
+            display: block;
+            border: 1px solid #000;
+            width: 100%;
+        }
+
     </style>
 </head>
 <body>
-<div class="flex-row">
-    <div style="width: 600px; height: auto;">
-        <div class="generateVideo"
-             data-video="666059011?h=6aa58dc41c"
-             data-aspectratio="aspectRatio1x1"
-             data-title="Video Title"
-             data-subtitle="Video Subtitle"
-             data-modal="true"
-        ></div>
+<div class="dev" style="padding: 300px 0;">
+    <div class="flex-row">
+        <div style="width: 600px; height: auto;">
+            <div class="generateVideo"
+                 data-video="666059011?h=6aa58dc41c"
+                 data-aspectratio="aspectRatio1x1"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
+        <div style="width: 1067px; height: auto">
+            <div class="generateVideo"
+                 data-video="673746465?h=11ccba6467"
+                 data-aspectratio="aspectRatio16x9"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
+        <div style="width: 800px; height: auto">
+            <div class="generateVideo"
+                 data-video="677308836?h=2296265f44"
+                 data-aspectratio="aspectRatio4x3"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
     </div>
-    <div style="width: 1067px; height: auto">
-        <div class="generateVideo"
-             data-video="673746465?h=11ccba6467"
-             data-aspectratio="aspectRatio16x9"
-             data-title="Video Title"
-             data-subtitle="Video Subtitle"
-             data-modal="true"
-        ></div>
+    <div class="flex-row">
+        <div style="width: 600px; height: auto;">
+            <div class="generateVideo"
+                 data-video="666059011?h=6aa58dc41c"
+                 data-aspectratio="aspectRatio1x1"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
+        <div style="width: 1067px; height: auto">
+            <div class="generateVideo"
+                 data-video="673746465?h=11ccba6467"
+                 data-aspectratio="aspectRatio16x9"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
+        <div style="width: 800px; height: auto">
+            <div class="generateVideo"
+                 data-video="677308836?h=2296265f44"
+                 data-aspectratio="aspectRatio4x3"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
     </div>
-    <div style="width: 800px; height: auto">
-        <div class="generateVideo"
-             data-video="677308836?h=2296265f44"
-             data-aspectratio="aspectRatio4x3"
-             data-title="Video Title"
-             data-subtitle="Video Subtitle"
-             data-modal="true"
-        ></div>
+    <div class="flex-row">
+        <div style="width: 600px; height: auto;">
+            <div class="generateVideo"
+                 data-video="666059011?h=6aa58dc41c"
+                 data-aspectratio="aspectRatio1x1"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
+        <div style="width: 1067px; height: auto">
+            <div class="generateVideo"
+                 data-video="673746465?h=11ccba6467"
+                 data-aspectratio="aspectRatio16x9"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
+        <div style="width: 800px; height: auto">
+            <div class="generateVideo"
+                 data-video="677308836?h=2296265f44"
+                 data-aspectratio="aspectRatio4x3"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
+    </div>
+    <div class="flex-row">
+        <div style="width: 600px; height: auto;">
+            <div class="generateVideo"
+                 data-video="666059011?h=6aa58dc41c"
+                 data-aspectratio="aspectRatio1x1"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
+        <div style="width: 1067px; height: auto">
+            <div class="generateVideo"
+                 data-video="673746465?h=11ccba6467"
+                 data-aspectratio="aspectRatio16x9"
+                 data-title="Video Title"
+                 data-subtitle="Video Subtitle"
+                 data-modal="true"
+            ></div>
+        </div>
     </div>
 </div>
+
 </body>
 <script>
-    $(document).ready(function () {
-        // generating videos
+    let players = {};
 
-        const aspectRatioValues = {
-            aspectRatio1x1: {
-                cssClass: "aspectRatio1x1",
-                height: "1080px",
-                width: "1080px",
-                maxHeight: "85vh",
-                maxWidth: "85vh",
-            },
-            aspectRatio16x9: {
-                cssClass: "aspectRatio16x9",
-                height: "1080px",
-                width: "1920px",
-                maxHeight: "1080px",
-                maxWidth: "1920px",
-            },
-            aspectRatio4x3: {
-                cssClass: "aspectRatio4x3",
-                height: "1080px",
-                width: "1440px",
-                maxHeight: "1080px",
-                maxWidth: "1440px",
-            },
-            aspectRatio4x5: {
-                cssClass: "aspectRatio4x5",
-                height: "1350px",
-                width: "1080px",
-                maxHeight: "1350px",
-                maxWidth: "1080px",
-            },
-        }
+    const aspectRatioValues = {
+        aspectRatio1x1: {
+            cssClass: "aspectRatio1x1",
+            height: "1080px",
+            width: "1080px",
+            maxHeight: "85vh",
+            maxWidth: "85vh",
+        },
+        aspectRatio16x9: {
+            cssClass: "aspectRatio16x9",
+            height: "1080px",
+            width: "1920px",
+            maxHeight: "1080px",
+            maxWidth: "1920px",
+        },
+        aspectRatio4x3: {
+            cssClass: "aspectRatio4x3",
+            height: "1080px",
+            width: "1440px",
+            maxHeight: "1080px",
+            maxWidth: "1440px",
+        },
+        aspectRatio4x5: {
+            cssClass: "aspectRatio4x5",
+            height: "1350px",
+            width: "1080px",
+            maxHeight: "1350px",
+            maxWidth: "1080px",
+        },
+    }
 
-        const generateVideo = (videoId, aspectRatio, title, subTitle, hasModal, linkUrl = "") => {
+    async function pausePlayer(playerId) {
+        if (players[playerId]?.status === "pause") return;
+        const pause = () => {
+            return players[playerId]?.player.pause();
+        };
 
-            if (hasModal) {
-                return $(`
+        await pause().then(() => {
+            players[playerId].status = "pause"
+            console.log('---File: video-block-opens-modal.html, Line 178 playerId, ():', playerId, players[playerId]);
+        });
+
+    }
+
+    async function playPlayer(playerId) {
+        if (players[playerId]?.status === "play") return;
+        const play = () => {
+            return players[playerId]?.player.play();
+        };
+        await play().then(() => {
+            players[playerId].status = "play";
+            console.log('---File: video-block-opens-modal.html, Line 178 playerId, ():', playerId, players[playerId]);
+        })
+
+    }
+
+    function elementInViewport(element) {
+        const bounding = element.getBoundingClientRect();
+        const elementHeight = element.offsetHeight + 500;
+
+        return bounding.top >= -elementHeight
+            && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) + elementHeight;
+
+    }
+
+    const generateVideo = (videoData) => {
+        const [videoId, aspectRatio, title, subTitle, hasModal, linkUrl, id] = videoData;
+        const iframe = `<div class="vimeoVideo ${aspectRatioValues[aspectRatio].cssClass}">
+                            <div class="vimeoVideo-block"></div>
+                            <iframe id="iframe_${id}" src="https://player.vimeo.com/video/${videoId}&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;background=1&amp;muted=1&amp;autoplay=1&amp;" frameborder="0"  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+                        </div>`
+        const titles = `<p class="sqsrte-large hover-spin-child">
+                            <strong>${title}</strong>
+                            <br/><span class="spin-this">+</span> ${subTitle}️
+                        </p>`
+        if (hasModal) {
+            return $(`
                     <a href="https://player.vimeo.com/video/${videoId}"
                         data-featherlight="iframe"
                         data-featherlight-iframe-frameborder="0"
@@ -110,71 +240,80 @@
                             width:${aspectRatioValues[aspectRatio].width};
                             max-height:96vh;
                         "
-                    >
-                        <div class="vimeoVideo ${aspectRatioValues[aspectRatio].cssClass}">
-                            <div class="vimeoVideo-block"></div>
-                            <iframe src="https://player.vimeo.com/video/${videoId}&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;background=1&amp;autopause=1" allowFullScreen="0"frameBorder="0"style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-                        </div>
-                        <p class="sqsrte-large hover-spin-child">
-                            <strong>${title}</strong>
-                            <br/><span class="spin-this">+</span> ${subTitle}️
-                        </p>
-                    </a>
+                    >${iframe}${titles}</a>
                 `);
-            } else {
-                return $(`
-                    <a href="${linkUrl}">
-                        <div class="vimeoVideo ${aspectRatioValues[aspectRatio].cssClass}">
-                            <div class="vimeoVideo-block"></div>
-                            <iframe src="https://player.vimeo.com/video/${videoId}&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;background=1&amp;autopause=1" allowFullScreen="0" frameBorder="0" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-                        </div>
-                        <p class="sqsrte-large hover-spin-child">
-                            <strong>${title}</strong>
-                            <br/><span class="spin-this">+</span> ${subTitle}️
-                        </p>
-                    </a>
+        } else {
+            return $(`
+                    <a href="${linkUrl}">${iframe}${titles}</a>
                 `);
-            }
-        };
+        }
+    };
 
-        const players = [];
-        const viewportHeight = $(window).height();
 
+    function addToPlayers(playerId) {
+        players = {
+            ...players,
+            [playerId]: {
+                status: "play",
+                player: new Vimeo.Player(`iframe_${playerId}`),
+            },
+        }
+    }
+
+    function renderVideo() {
+        const playerId = $(this).attr("id");
+
+        const generateVideoData = [
+            $(this).data("video"),
+            $(this).data("aspectratio"),
+            $(this).data("title"),
+            $(this).data("subtitle"),
+            $(this).data("modal"),
+            $(this).data("link"),
+            playerId,
+        ]
+        const $generatedVideo = generateVideo(generateVideoData);
+
+        $generatedVideo.appendTo($(this))
+        $(this).data("loaded", true);
+        $(this).addClass("loaded");
+        addToPlayers(playerId);
+    }
+
+    function videoMagic() {
         $('.generateVideo').each(function () {
-            const $vimeoVideo = generateVideo(
-                $(this).data("video"),
-                $(this).data("aspectratio"),
-                $(this).data("title"),
-                $(this).data("subtitle"),
-                $(this).data("modal"),
-                $(this).data("link"),
-            );
+            const playerId = $(this).attr("id");
+            const element = document.querySelector(`#${playerId}`);
+            const inView = elementInViewport(element);
+            if ($(this).data("loaded")) {
+                if (inView) {
+                    playPlayer(playerId)
+                } else {
+                    pausePlayer(playerId)
+                }
+            } else {
+                if (inView) {
+                    renderVideo.call(this);
+                }
+            }
+        })
+    }
 
-            $vimeoVideo.appendTo($(this));
+    $(document).ready(function () {
 
-            players.push({
-                player: new Vimeo.Player($(this).find("iframe").get(0)),
-                top: $(this).offset().top,
-                bottom: $(this).offset().top + $(this).height(),
-                height: $(this).outerHeight(),
-                status: "pause"
-            })
-            $(this).addClass("loaded")
+        $('.generateVideo').each(function (index) {
+            $(this).attr("id", `video_${index}`);
         });
 
         // video pause if not in view
+        $(window).on('load', function () {
+            videoMagic();
+        })
 
         $(window).on('scroll', function () {
-            const scrollPos = $(window).scrollTop();
-            for (let i = 0; i < players.length; i++) {
-                const elementFromTop = players[i].top - scrollPos + players[i].height;
-                const status = (elementFromTop > 0 && elementFromTop < players[i].top + viewportHeight) ? "play" : "pause";
-                if (players[i].status !== status) {
-                    players[i].status = status;
-                    players[i].player[status]();
-                }
-            }
+            videoMagic();
         });
+
     })
 </script>
 <script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript"
