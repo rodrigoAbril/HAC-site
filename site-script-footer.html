@@ -5,8 +5,9 @@
             TRAVIS: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6209776c93dd371732167d3e/1644787564463/Travis.jpg",
             SCOTT: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/62097774d0bc844e2922e746/1644787572953/Scott.jpg",
             NED: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6209777b82cb265dbd168743/1644787580024/Ned.jpg",
-            MEAGAN: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6209779c3dea9e22f64a13fd/1644787612761/Meagan.jpg",
+            // MEAGAN: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6209779c3dea9e22f64a13fd/1644787612761/Meagan.jpg",
             MATT: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6209779f97c817535f7c9bf8/1644787615988/Matt.jpg",
+            DAVID: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6212bda437825817834c4296/1645395364169/H%2BC-Thumbnail-Portrait-David-001.jpg",
             MAGNUS: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620977a56f98284656523eca/1644787621163/Magnus.jpg",
             LUIS: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620977a993dd3717321687c9/1644787625062/Luis.jpeg",
             LAUREN: "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620977ae6a25c62651beb02e/1644787630530/Lauren.jpg",
@@ -65,22 +66,22 @@
             cssClass: "aspectRatio16x9",
             height: "1080px",
             width: "1920px",
-            maxHeight: "1080px",
-            maxWidth: "1920px",
+            maxHeight: "96vh",
+            maxWidth: "96vw",
         },
         aspectRatio4x3: {
             cssClass: "aspectRatio4x3",
             height: "1080px",
             width: "1440px",
-            maxHeight: "1080px",
-            maxWidth: "1440px",
+            maxHeight: "96vh",
+            maxWidth: "96vw",
         },
         aspectRatio4x5: {
             cssClass: "aspectRatio4x5",
             height: "1350px",
             width: "1080px",
-            maxHeight: "1350px",
-            maxWidth: "1080px",
+            maxHeight: "96vh",
+            maxWidth: "96vw",
         },
     }
 
@@ -92,7 +93,6 @@
 
         await pause().then(() => {
             players[playerId].status = "pause"
-            console.log('---File: video-block-opens-modal.html, Line 178 playerId, ():', playerId, players[playerId]);
         });
 
     }
@@ -104,7 +104,6 @@
         };
         await play().then(() => {
             players[playerId].status = "play";
-            console.log('---File: video-block-opens-modal.html, Line 178 playerId, ():', playerId, players[playerId]);
         })
 
     }
@@ -140,7 +139,8 @@
                             border:none;
                             height:${aspectRatioValues[aspectRatio].height};
                             width:${aspectRatioValues[aspectRatio].width};
-                            max-height:96vh;
+                            max-height:90vh;
+                            max-width:100%;
                         "
                     >${iframe}${titles}</a>
                 `);
@@ -220,6 +220,7 @@
 
             if (existingLogoVideo){
                 existingLogoVideo.play();
+                return;
             }
 
             videlem.id = "logoVideo";
@@ -231,11 +232,10 @@
             const sourceMP4 = document.createElement("source");
             sourceMP4.type = "video/mp4";
             sourceMP4.src = isNight() ? logoSrcNight : logoSrcDay;
-
             videlem.appendChild(sourceMP4);
-
             const logoLink = document.querySelector(".header-title-logo a");
             logoLink.appendChild(videlem);
+
         }
 
 
