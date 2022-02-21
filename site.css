@@ -7,10 +7,10 @@ header a {
 }
 
 p, h1, h2, h3 {
-    /*-webkit-hyphens: manual !important;*/
-    /*-moz-hyphens: manual !important;*/
-    /*-ms-hyphens: manual !important;*/
-    /*hyphens: manual !important;*/
+    -webkit-hyphens: manual !important;
+    -moz-hyphens: manual !important;
+    -ms-hyphens: manual !important;
+    hyphens: manual !important;
 }
 
 @font-face {
@@ -340,14 +340,14 @@ h1, h2, h3, h4,
     font-family: america, sans-serif;
     font-weight: 400;
     letter-spacing: 0.1rem;
-    word-break: keep-all;
     line-height: 1;
     padding: 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto;
+    word-break: keep-all;
+    /*word-wrap: break-word;*/
+    /*overflow-wrap: break-word;*/
+    /*-webkit-hyphens: auto;*/
+    /*-moz-hyphens: auto;*/
+    /*hyphens: auto;*/
 }
 
 .big-papa-bold-title,
@@ -410,6 +410,11 @@ h1.words-hover.big-bold-title span {
         font-size: 6vw;
     }
 
+    .words-hover.big-bold-title {
+        font-size: 5vw;
+    }
+
+
 }
 
 @media screen and (max-width: 1200px) and (min-width: 901px) {
@@ -421,7 +426,7 @@ h1.words-hover.big-bold-title span {
     }
 
     .words-hover.big-bold-title {
-        font-size: 5vw;
+        font-size: 4vw;
     }
 
 
@@ -436,9 +441,18 @@ h1.words-hover.big-bold-title span {
     }
 
     .words-hover.big-bold-title {
-        font-size: 64px;
+        font-size: 2.7vw;
     }
+
 }
+
+@media screen and (min-width: 1600px) {
+    .words-hover.big-bold-title {
+        font-size: 2.8vw;
+    }
+
+}
+
 
 
 /*menu mobile */
