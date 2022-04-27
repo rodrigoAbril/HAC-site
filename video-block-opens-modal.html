@@ -6,8 +6,7 @@
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="//code.jquery.com/jquery-latest.js"></script>
     <link href="site.css" type="text/css" rel="stylesheet"/>
-    <link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css"
-          rel="stylesheet"/>
+    <link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet"/>
     <style>
         .flex-row {
             display: flex;
@@ -34,14 +33,75 @@
             width: 100%;
         }
 
+
+        .header-title {
+            display: flex;
+        }
+
+        .header-title-logo,
+        .header-mobile-logo {
+            width: 100px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .header-title-logo img,
+        .header-title-logo video,
+        .header-mobile-logo img,
+        .header-mobile-logo video {
+            max-width: 100%;
+        }
+
+
+        .titles-row {
+            display: flex;
+        }
+
+        .titles-titles {
+            flex-grow: 0;
+            flex-shrink: 0;
+            width: 40%;
+        }
+
+        .titles-description p {
+            font-size: calc((1 - 1) * 1.2vw + 1rem);
+            line-height: 1.4em;
+        }
+
     </style>
 </head>
 <body>
 <div class="dev" style="padding: 300px 0;">
+    <div class="
+                    header-title
+                    header-title--use-mobile-logo
+                  " data-animation-role="header-element">
+
+        <div class="header-title-logo">
+            <a href="/" data-animation-role="header-element">
+                <picture>
+                    <img src="//images.squarespace-cdn.com/content/v1/604a5cc8bb78f96c481a92e8/33a41244-0984-4891-a524-84372708e56b/HAC-LogoMark-005.png?format=1500w"
+                         alt="HUE+CRY" class="nightLogo">
+                </picture>
+            </a>
+        </div>
+
+
+        <div class="header-mobile-logo">
+            <a href="/" data-animation-role="header-element">
+                <picture>
+                    <img src="//images.squarespace-cdn.com/content/v1/604a5cc8bb78f96c481a92e8/9eb2e9d9-c053-4a97-85b8-c6df9338d1bf/HueAndCry_Icons-01.png?format=1500w"
+                         alt="HUE+CRY">
+                </picture>
+            </a>
+        </div>
+
+    </div>
     <div class="flex-row">
         <div style="width: 600px; height: auto;">
             <div class="generateVideo"
-                 data-video="666059011?h=6aa58dc41c"
+                 data-thumbnail="666059011?h=6aa58dc41c"
+                 data-video="673746465?h=11ccba6467"
                  data-aspectratio="aspectRatio1x1"
                  data-title="Video Title"
                  data-subtitle="Video Subtitle"
@@ -55,17 +115,14 @@
                  data-title="Video Title"
                  data-subtitle="Video Subtitle"
                  data-modal="true"
+                 data-description="How do you make picking a number more fun? By making each number a character, of course. Yebo provided some laugh-out-loud character outlines, and we were off the the races"
             ></div>
         </div>
-        <div style="width: 800px; height: auto">
-            <div class="generateVideo"
-                 data-video="677308836?h=2296265f44"
-                 data-aspectratio="aspectRatio4x3"
-                 data-title="Video Title"
-                 data-subtitle="Video Subtitle"
-                 data-modal="true"
-            ></div>
-        </div>
+        <div class="generateIntro"
+             data-title="Title"
+             data-subtitle="Video Subtitle"
+             data-description="How do you make picking a number more fun? By making each number a character, of course. Yebo provided some laugh-out-loud character outlines, and we were off the the races"
+        ></div>
     </div>
     <div class="flex-row">
         <div style="width: 600px; height: auto;">
@@ -147,6 +204,8 @@
     </div>
 </div>
 
+
+
 </body>
 <script>
     let players = {};
@@ -216,19 +275,35 @@
 
     }
 
-    const generateVideo = (videoData) => {
-        const [videoId, aspectRatio, title, subTitle, hasModal, linkUrl, id] = videoData;
-        const iframe = `<div class="vimeoVideo ${aspectRatioValues[aspectRatio].cssClass}">
-                            <div class="vimeoVideo-block"></div>
-                            <iframe id="iframe_${id}" src="https://player.vimeo.com/video/${videoId}&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;background=1&amp;muted=1&amp;autoplay=1&amp;" frameborder="0"  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
-                        </div>`
+    const generateIntro = (titleData) => {
+        const [title, subTitle, description] = titleData
         const titles = `<p class="sqsrte-large hover-spin-child">
                             <strong>${title}</strong>
                             <br/><span class="spin-this">+</span> ${subTitle}️
                         </p>`
+        return description ?
+            `<div class="titles-row">
+                    <div class="titles-titles">
+                        ${titles}
+                    </div>
+                    <div class="titles-description">
+                        <p>${description}</p><p><strong class="description-link">VIEW MORE →</strong></p>
+                    </div>
+                </div>`
+            :
+            `${titles}`;
+    }
+
+    const generateVideo = (videoData) => {
+        const [videoId, thumbnailId, aspectRatio, title, subTitle, description, hasModal, linkUrl, id] = videoData;
+        const iframe = `<div class="vimeoVideo ${aspectRatioValues[aspectRatio].cssClass}">
+                            <div class="vimeoVideo-block"></div>
+                            <iframe id="iframe_${id}" src="https://player.vimeo.com/video/${thumbnailId ?? videoId}&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;background=1&amp;muted=1&amp;autoplay=1&amp;" frameborder="0"  style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+                        </div>`
+
         if (hasModal) {
             return $(`
-                    <a href="https://player.vimeo.com/video/${videoId}"
+                    <a href="https://player.vimeo.com/video/${videoId ?? thumbnailId}"
                         data-featherlight="iframe"
                         data-featherlight-iframe-frameborder="0"
                         data-featherlight-iframe-allow="autoplay; encrypted-media"
@@ -238,13 +313,17 @@
                             border:none;
                             height:${aspectRatioValues[aspectRatio].height};
                             width:${aspectRatioValues[aspectRatio].width};
-                            max-height:96vh;
+                            max-height:90vh;
+                            max-width:100%;
                         "
-                    >${iframe}${titles}</a>
+                    >
+                        ${iframe}
+                        ${generateIntro([title, subTitle, description])}
+                    </a>
                 `);
         } else {
             return $(`
-                    <a href="${linkUrl}">${iframe}${titles}</a>
+                    <a href="${linkUrl}">${iframe}${generateIntro([title, subTitle, description])}</a>
                 `);
         }
     };
@@ -260,18 +339,34 @@
         }
     }
 
+    function renderIntro() {
+        console.log('this :', $(this));
+        const generateIntroData = [
+            $(this).data("title"),
+            $(this).data("subtitle"),
+            $(this).data("description"),
+        ]
+        const $generatedIntro = generateIntro(generateIntroData);
+
+        $($generatedIntro).appendTo($(this))
+
+    }
+
     function renderVideo() {
         const playerId = $(this).attr("id");
 
         const generateVideoData = [
             $(this).data("video"),
+            $(this).data("thumbnail"),
             $(this).data("aspectratio"),
             $(this).data("title"),
             $(this).data("subtitle"),
+            $(this).data("description"),
             $(this).data("modal"),
             $(this).data("link"),
             playerId,
         ]
+
         const $generatedVideo = generateVideo(generateVideoData);
 
         $generatedVideo.appendTo($(this))
@@ -299,10 +394,56 @@
         })
     }
 
+    const $body = $("body");
+
+    function isNight() {
+        let date = new Date();
+        return (date.getHours() > 21 || date.getHours() < 6);
+    }
+
+
+    function changeLogoToVideo() {
+        const logoSrcNight = "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/6237b0a7e5909a1d79e51017/1647816872257/HAC-LogoMark-HoverState-NightMode-V2.mp4"
+        const logoSrcDay = "https://static1.squarespace.com/static/604a5cc8bb78f96c481a92e8/t/620efda1203ace79d2f6a70c/1645149602471/HAC-LogoMark-HoverState-001.mp4"
+
+
+        const videoElement = document.createElement("video");
+
+        const existingLogoVideo = document.querySelector("#logoVideo");
+
+
+        if (existingLogoVideo) {
+            existingLogoVideo.play();
+            return;
+        }
+
+        videoElement.cssClass = "logoVideo";
+        videoElement.muted = true;
+        videoElement.autoplay = true;
+        videoElement.loop = isNight();
+
+        const sourceMP4 = document.createElement("source");
+        sourceMP4.type = "video/mp4";
+        sourceMP4.src = isNight() ? logoSrcNight : logoSrcDay;
+
+        videoElement.appendChild(sourceMP4);
+
+        const logoLink = document.querySelector(".header-display-desktop .header-title-logo a");
+        logoLink.appendChild(videoElement);
+
+        const mobileLogoLink = document.querySelector(".header-display-mobile .header-mobile-logo a");
+        mobileLogoLink.appendChild(videoElement.cloneNode(true));
+    }
+
+
     $(document).ready(function () {
 
         $('.generateVideo').each(function (index) {
             $(this).attr("id", `video_${index}`);
+        });
+
+        $('.generateIntro').each(function () {
+            renderIntro.call(this);
         });
 
         // video pause if not in view
@@ -313,6 +454,16 @@
         $(window).on('scroll', function () {
             videoMagic();
         });
+
+        $(".header-title-logo").on({
+            mouseenter: function () {
+                if (isNight()) return;
+                changeLogoToVideo();
+            },
+        });
+
+
+        changeLogoToVideo();
 
     })
 </script>
